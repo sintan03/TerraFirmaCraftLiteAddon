@@ -16,7 +16,8 @@ function checkSlot(player, slot) {
     const playerHead = player.getHeadLocation();
     const uiIndex = itemUiData.findIndex(value => value.id.includes(itemId));
     const uiType = itemUiData[uiIndex].entity;
-    dimension.spawnEntity(uiType, playerHead);
+    const entity = dimension.spawnEntity(uiType, playerHead);
+    entity.nameTag = entity.typeId;
 };
 
 world.afterEvents.playerHotbarSelectedSlotChange.subscribe(ev => {

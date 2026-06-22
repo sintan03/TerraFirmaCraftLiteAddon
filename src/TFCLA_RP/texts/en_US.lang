@@ -4,4 +4,8 @@ item.tfcla:stone_axe_head=Stone Axe Head
 
 item.tfcla:stone_axe=Stone Axe
 
+ui.tfcla:knapping.rock.title=Rock clacks
+ui.tfcla:knapping.clay.title=Clay squishes
+ui.tfcla:knapping.leather.title=Leather scrapes
+
 item.tfcla:arrow_right=[UI]

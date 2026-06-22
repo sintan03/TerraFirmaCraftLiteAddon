@@ -5,6 +5,6 @@ export const itemUiData = [
         "id": [
             "tfcla:stone_loose_rock"
         ],
-        "entity": "minecraft:armor_stand"//tfcla:ui_knapping
+        "entity": "tfcla:ui_knapping"
     }
 ]
