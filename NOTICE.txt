@@ -1,0 +1,42 @@
+This project contains assets derived from TerraFirmaCraft.
+
+TerraFirmaCraft
+Copyright (c) TerraFirmaCraft Contributors
+
+Source:
+https://github.com/TerraFirmaCraft/TerraFirmaCraft
+
+Licensed under the European Union Public Licence v1.2 (EUPL-1.2).
+
+The following assets are derived from TerraFirmaCraft:
+- Block textures
+- Item textures
+- GUI textures
+
+Changes made:
+- Adapted textures for Minecraft Bedrock Edition
+- Modified GUI textures
+- Added new assets and functionality
+
+---------------- Japanese ----------------
+
+このアドオンには TerraFirmaCraft 由来のアセットが含まれています。
+
+TerraFirmaCraft
+Copyright (c) TerraFirmaCraft Contributors
+
+元プロジェクト:
+https://github.com/TerraFirmaCraft/TerraFirmaCraft
+
+ライセンス:
+EUPL-1.2
+
+以下のアセットは TerraFirmaCraft に由来します:
+- ブロックテクスチャ
+- アイテムテクスチャ
+- GUIテクスチャ
+
+変更点:
+- 統合版用に調整したテクスチャ
+- 変更されたGUIテクスチャ
+- 新しいアセットと機能の追加
