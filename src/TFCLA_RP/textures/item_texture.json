@@ -1,0 +1,21 @@
+{
+	"resource_pack_name": "TFCLA",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"tfcla:stone_loose_rock": {
+			"textures": "textures/items/loose_rock/dacite"
+		},
+
+		"tfcla:stone_axe_head": {
+			"textures": "textures/items/stone/axe_head"
+		},
+
+		"tfcla:stone_axe": {
+			"textures": "textures/items/stone/axe"
+		},
+
+		"tfcla:arrow_right": {
+			"textures": "textures/ui/arrow/right"
+		}
+	}
+}
