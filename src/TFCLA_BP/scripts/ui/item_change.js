@@ -40,6 +40,7 @@ world.afterEvents.playerHotbarSelectedSlotChange.subscribe(ev => {
 
 world.afterEvents.playerInventoryItemChange.subscribe(ev => {
     const { player, slot } = ev;
+    if (player.selectedSlotIndex !== slot) return;
     checkSlot(player, slot);
 });
 
