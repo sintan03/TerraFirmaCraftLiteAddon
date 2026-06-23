@@ -1,4 +1,4 @@
-import { world, system, Player, PlayerInventoryType } from "@minecraft/server";
+import { world, system, Player, PlayerInventoryType, DimensionTypes } from "@minecraft/server";
 
 import { itemUiData } from "../data/item_ui.js";
 
@@ -6,14 +6,13 @@ import { itemUiData } from "../data/item_ui.js";
  * 
  * @param { Player } player 
  * @param { Number } slot 
- * @param { Boolean } close
  */
-function checkSlot(player, slot, close) {
+function checkSlot(player, slot) {
     const dimension = player.dimension;
     const playerHead = player.getHeadLocation();
-    if (close || player.hasTag(`tfcla_knapping`)) {
+    if (player.hasTag(`tfcla_knapping`)) {
         for (const data of itemUiData) {
-            const oldEntity = dimension.getEntities({ "type": data.type, "maxDistance": 1, "closest": 1, "location": playerHead })[0];
+            const oldEntity = dimension.getEntities({ "type": data.entity, "maxDistance": 1, "closest": 1, "location": playerHead })[0];
             if (!oldEntity) continue;
             oldEntity.remove();
             player.removeTag(`tfcla_knapping`);
@@ -36,18 +35,12 @@ function checkSlot(player, slot, close) {
 
 world.afterEvents.playerHotbarSelectedSlotChange.subscribe(ev => {
     const { player, newSlotSelected } = ev;
-    checkSlot(player, newSlotSelected, true);
+    checkSlot(player, newSlotSelected);
 });
 
 world.afterEvents.playerInventoryItemChange.subscribe(ev => {
-    const { player, slot, inventoryType, itemStack, beforeItemStack } = ev;
-    const itemId = itemStack?.typeId;
-    const beforeItemId = beforeItemStack?.typeId;
-    if (inventoryType === PlayerInventoryType.Hotbar && slot === player.selectedSlotIndex && itemUiData.some(value => value.id.includes(beforeItemId)) && !itemUiData.some(value => value.id.includes(itemId))) {
-        checkSlot(player, slot, true);
-    } else {
-        checkSlot(player, slot, false);
-    };
+    const { player, slot } = ev;
+    checkSlot(player, slot);
 });
 
 world.afterEvents.entityContainerClosed.subscribe(ev => {
@@ -59,5 +52,14 @@ world.afterEvents.entityContainerClosed.subscribe(ev => {
     const player = closeSource.entity;
     if (!player) return;
     const slot = player.selectedSlotIndex;
-    checkSlot(player, slot, true);
+    checkSlot(player, slot);
+});
+
+world.afterEvents.playerSpawn.subscribe(ev => {
+    const { player } = ev;
+    const playerName = player.name;
+    const dimensions = DimensionTypes.getAll().map(dimensionType => world.getDimension(dimensionType.typeId));
+    dimensions.forEach(dimension => {
+        dimension.getEntities({ "tags": [`tfcla_${playerName}`] }).forEach(entity => entity.remove());
+    });
 });
