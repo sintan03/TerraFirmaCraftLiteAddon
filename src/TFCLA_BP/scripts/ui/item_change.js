@@ -12,13 +12,13 @@ function checkSlot(player, slot, close) {
     const dimension = player.dimension;
     const playerHead = player.getHeadLocation();
     if (close || player.hasTag(`tfcla_knapping`)) {
-        itemUiData.forEach(element => {
-            const oldEntity = dimension.getEntities({ "type": element.type, "maxDistance": 1, "closest": 1, "location": playerHead })[1];
+        for (const data of itemUiData) {
+            const oldEntity = dimension.getEntities({ "type": data.type, "maxDistance": 1, "closest": 1, "location": playerHead })[0];
             if (!oldEntity) continue;
             oldEntity.remove();
             player.removeTag(`tfcla_knapping`);
             break;
-        });
+        };
     };
     const inventory = player.getComponent(`minecraft:inventory`);
     const itemStack = inventory.container.getItem(slot);
@@ -43,7 +43,7 @@ world.afterEvents.playerInventoryItemChange.subscribe(ev => {
     const { player, slot, inventoryType, itemStack, beforeItemStack } = ev;
     const itemId = itemStack?.typeId;
     const beforeItemId = beforeItemStack?.typeId;
-    if (inventoryType === PlayerInventoryType.Hotbar && slot === player.selectedSlotIndex && itemUiData.some(value => value.id.includes(itemId)) && !itemUiData.some(value => value.id.includes(itemId))) {
+    if (inventoryType === PlayerInventoryType.Hotbar && slot === player.selectedSlotIndex && itemUiData.some(value => value.id.includes(beforeItemId)) && !itemUiData.some(value => value.id.includes(itemId))) {
         checkSlot(player, slot, true);
     } else {
         checkSlot(player, slot, false);
