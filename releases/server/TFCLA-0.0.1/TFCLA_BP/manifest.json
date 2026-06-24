@@ -4,7 +4,7 @@
     "name": "TFCLA",
     "description": "Terra Firma Craft Lite Addon",
     "uuid": "b36b23f9-dc12-4e8e-9979-c0ea907868bb",
-    "version": [1, 0, 1],
+    "version": [1, 0, 0],
     "min_engine_version": [
       1,
       21,
@@ -17,19 +17,19 @@
       "language": "javascript",
       "uuid": "e33e25fd-57fe-40dc-91bb-283a6375a36b",
       "entry": "scripts/tfcla.js",
-      "version": [1, 0, 1]
+      "version": [1, 0, 0]
     },
     {
       "description": "Terra Firma Craft Lite Addon",
       "type": "data",
       "uuid": "4834de0e-c1bb-4de6-97ad-96da41ec4f0f",
-      "version": [1, 0, 1]
+      "version": [1, 0, 0]
     }
   ],
   "dependencies": [
     {
       "uuid": "3fc438de-1ab1-43b0-993a-153e574e824e",
-      "version": [1, 0, 1]
+      "version": [1, 0, 0]
     },
     {
       "module_name": "@minecraft/server",

@@ -1,0 +1,6 @@
+{
+  "ui_defs": [
+    "ui/main/knapping.json",
+    "ui/main/util.json"
+  ]
+}

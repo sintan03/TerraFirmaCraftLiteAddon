@@ -1,0 +1,63 @@
+{
+  "format_version": "1.19.30",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "tfcla:ui_knapping",
+      "is_summonable": true,
+      "is_spawnable": false,
+      "is_experimental": false,
+      "properties": {
+        "tfcla:complete": {
+          "type": "bool",
+          "default": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:inventory": {
+        "container_type": "inventory",
+        "inventory_size": 52
+      },
+      "minecraft:health": {
+        "value": 100,
+        "max": 100
+      },
+      "minecraft:nameable": {
+        "allow_name_tag_renaming": false,
+        "always_show": false
+      },
+      "minecraft:type_family": {
+        "family": [
+          "inventory",
+          "inanimate"
+        ]
+      },
+      "minecraft:fire_immune": true,
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": false
+        }
+      },
+      "minecraft:custom_hit_test": {
+        "hitboxes": [{
+          "width": 0.58,
+          "height": 0.58,
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        }]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1,
+        "max": 1
+      },
+      "minecraft:collision_box": {
+        "height": 0.55,
+        "width": 0.55
+      }
+    }
+  }
+}

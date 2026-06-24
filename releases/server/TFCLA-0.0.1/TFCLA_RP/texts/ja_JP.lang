@@ -1,0 +1,12 @@
+item.tfcla:stone_loose_rock=石の小石
+
+item.tfcla:stone_axe_head=石の斧の頭
+
+item.tfcla:stone_axe=石の斧
+
+ui.tfcla:knapping.rock.title=石を砕く
+ui.tfcla:knapping.clay.title=粘土をこねる
+ui.tfcla:knapping.leather.title=革を切り裂く
+
+item.tfcla:arrow_right=[UI]
+item.tfcla:ui_stone=砕く
