@@ -9,3 +9,4 @@ ui.tfcla:knapping.clay.title=粘土をこねる
 ui.tfcla:knapping.leather.title=革を切り裂く
 
 item.tfcla:arrow_right=[UI]
+item.tfcla:ui_stone=砕く

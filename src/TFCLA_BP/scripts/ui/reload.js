@@ -1,8 +1,8 @@
 import { world, system, Dimension, DimensionTypes } from "@minecraft/server";
 
-import { itemUiData } from "../data/item_ui.js";
+import { itemUiData, knappingMap } from "../data/item_ui.js";
 
-system.run(() => {
+system.runTimeout(() => {
     const players = world.getAllPlayers();
     const dimensions = DimensionTypes.getAll().map(dimensionType => world.getDimension(dimensionType.typeId));
     players.forEach(player => player.removeTag(`tfcla_knapping`));
@@ -14,15 +14,17 @@ system.run(() => {
     });
     system.runInterval(() => {
         itemUiData.forEach(data => {
-            for(const dimension of dimensions) {
+            for (const dimension of dimensions) {
                 const entities = dimension.getEntities({ "type": data.entity });
                 if (!entities) continue;
-                players.forEach(player => {
-                    entities.forEach(entity => {
-                        if (entity.hasTag(`tfcla_${player.name}`)) entity.teleport(player.getHeadLocation());
-                    });
+                entities.forEach(entity => {
+                    const itemUiDataFound = itemUiData.find(value => value.entity === entity.typeId);
+                    itemUiDataFound.tick(entity, itemUiDataFound);
+                    if (knappingMap.has(entity.id)) {
+                        entity.teleport(knappingMap.get(entity.id).owner.getHeadLocation());
+                    };
                 });
             };
         });
     }, 1);
-});
+}, 20);

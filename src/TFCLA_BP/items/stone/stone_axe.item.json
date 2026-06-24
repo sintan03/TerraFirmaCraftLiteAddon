@@ -17,7 +17,7 @@
             "minecraft:can_destroy_in_creative": false,
             "minecraft:hand_equipped": true,
 			"minecraft:durability": {
-				"max_durability": 32
+				"max_durability": 64
 			},
 			"minecraft:damage": {
 				"value": 2

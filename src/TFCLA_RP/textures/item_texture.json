@@ -16,6 +16,9 @@
 
 		"tfcla:arrow_right": {
 			"textures": "textures/ui/arrow/right"
+		},
+		"tfcla:ui_stone": {
+			"textures": "textures/ui/block/rock/raw/stone"
 		}
 	}
 }
