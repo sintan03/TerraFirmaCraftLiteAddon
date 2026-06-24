@@ -12,6 +12,7 @@ The following assets are derived from TerraFirmaCraft:
 - Block textures
 - Item textures
 - GUI textures
+- Sound effects
 
 Changes made:
 - Adapted textures for Minecraft Bedrock Edition
@@ -35,6 +36,7 @@ EUPL-1.2
 - ブロックテクスチャ
 - アイテムテクスチャ
 - GUIテクスチャ
+- 効果音
 
 変更点:
 - 統合版用に調整したテクスチャ
