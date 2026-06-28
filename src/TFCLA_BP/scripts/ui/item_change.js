@@ -25,38 +25,33 @@ function checkSlot(player, slot) {
     const inventory = player.getComponent(`minecraft:inventory`);
     const itemStack = inventory.container.getItem(slot);
     const itemId = itemStack?.typeId ?? ``;
-    if (!itemUiData.find(value => value.id.includes(itemId))) return;
+    if (!itemUiData.find(value => value.id === itemId)) return;
     const itemUiDataFound = itemUiData.find(value => value.id.includes(itemId));
     const amount = itemStack.amount;
     if (amount < itemUiDataFound.amount) return;
     const uiType = itemUiDataFound.entity;
     const entity = spawnUiEntity(dimension, uiType, playerHead, player, itemUiDataFound);
-    entity.nameTag = entity.typeId;
+    entity.nameTag = `${entity.typeId}_${itemUiDataFound.type}`;
     player.addTag(`tfcla_knapping`);
 };
 
 world.afterEvents.playerHotbarSelectedSlotChange.subscribe(ev => {
     const { player, newSlotSelected } = ev;
-    try {
-        checkSlot(player, newSlotSelected);
-    } catch (e) { };
+    checkSlot(player, newSlotSelected);
 });
 
 world.afterEvents.playerInventoryItemChange.subscribe(ev => {
     const { player, slot } = ev;
     if (player.selectedSlotIndex !== slot) return;
-    try {
-        checkSlot(player, slot);
-    } catch (e) { };
+    checkSlot(player, slot);
 });
 
 world.afterEvents.entityContainerClosed.subscribe(ev => {
     const { entity, closeSource } = ev;
+    if (!entity.isValid) return;
     const entityId = entity.typeId;
     if (!itemUiData.some(value => value.entity === entityId)) return;
-    try {
-        entity.remove();
-    } catch (e) { };
+    entity.remove();
     /** @type { Player | undefined } */
     const player = closeSource.entity;
     if (!player) return;
@@ -75,8 +70,9 @@ world.afterEvents.playerSpawn.subscribe(ev => {
 
 world.afterEvents.entitySpawn.subscribe(ev => {
     const { entity } = ev;
+    if (!entity.isValid) return;
     const itemComponent = entity.getComponent(`minecraft:item`);
     if (!itemComponent) return;
     const itemId = itemComponent.itemStack.typeId;
-    if (removeItemData.starts.some(start => itemId.startsWith(start))) entity.remove(); 
+    if (removeItemData.starts.some(uxW => itemId.startsWith(uxW))) entity.remove(); 
 });

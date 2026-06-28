@@ -4,9 +4,18 @@ item.tfcla:stone_axe_head=石の斧の頭
 
 item.tfcla:stone_axe=石の斧
 
+item.tfcla:fire_clay=耐火粘土
+
 ui.tfcla:knapping.rock.title=石を砕く
-ui.tfcla:knapping.clay.title=粘土をこねる
+ui.tfcla:knapping.clay_ball.title=粘土をこねる
+ui.tfcla:knapping.fire_clay.title=耐火粘土をこねる
 ui.tfcla:knapping.leather.title=革を切り裂く
 
 item.tfcla:arrow_right=[UI]
-item.tfcla:ui_stone=砕く
+
+item.tfcla:ui_knapping_stone=砕く
+item.tfcla:ui_knapping_clay_ball=こねる
+item.tfcla:ui_knapping_clay_ball_disabled=[UI]
+item.tfcla:ui_knapping_fire_clay=こねる
+item.tfcla:ui_knapping_fire_clay_disabled=[UI]
+item.tfcla:ui_knapping_leather=切り裂く

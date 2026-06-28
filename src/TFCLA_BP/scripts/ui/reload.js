@@ -7,7 +7,7 @@ system.runTimeout(() => {
     const dimensions = DimensionTypes.getAll().map(dimensionType => world.getDimension(dimensionType.typeId));
     players.forEach(player => player.removeTag(`tfcla_knapping`));
     itemUiData.forEach(data => {
-        for(const dimension of dimensions) {
+        for (const dimension of dimensions) {
             const entities = dimension.getEntities({ "type": data.entity });
             entities.forEach(entity => entity.remove());
         };
@@ -18,9 +18,10 @@ system.runTimeout(() => {
                 const entities = dimension.getEntities({ "type": data.entity });
                 if (!entities) continue;
                 entities.forEach(entity => {
-                    const itemUiDataFound = itemUiData.find(value => value.entity === entity.typeId);
-                    itemUiDataFound.tick(entity, itemUiDataFound);
                     if (knappingMap.has(entity.id)) {
+                        const type = knappingMap.get(entity.id).type;
+                        const itemUiDataFound = itemUiData.find(value => value.type === type);
+                        itemUiDataFound.tick(entity, itemUiDataFound);
                         entity.teleport(knappingMap.get(entity.id).owner.getHeadLocation());
                     };
                 });

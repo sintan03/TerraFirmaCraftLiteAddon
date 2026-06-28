@@ -16,7 +16,7 @@
     "components": {
       "minecraft:inventory": {
         "container_type": "inventory",
-        "inventory_size": 52
+        "inventory_size": 28
       },
       "minecraft:health": {
         "value": 100,

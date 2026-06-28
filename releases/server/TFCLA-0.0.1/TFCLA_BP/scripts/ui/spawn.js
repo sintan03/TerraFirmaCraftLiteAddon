@@ -31,7 +31,8 @@ export function spawnUiEntity(dimension, identifier, location, player, dataLocat
     });
     knappingMap.set(entity.id, {
         "progress": Array(25).fill(true),
-        "owner": player
+        "owner": player,
+        "type": dataLocation.type
     });
     return entity;
 };

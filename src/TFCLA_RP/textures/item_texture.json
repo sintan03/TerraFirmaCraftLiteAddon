@@ -14,11 +14,31 @@
 			"textures": "textures/items/stone/axe"
 		},
 
+		"tfcla:fire_clay": {
+			"textures": "textures/items/fire_clay"
+		},
+
 		"tfcla:arrow_right": {
 			"textures": "textures/ui/arrow/right"
 		},
-		"tfcla:ui_stone": {
-			"textures": "textures/ui/block/rock/raw/stone"
+
+		"tfcla:ui_knapping_stone": {
+			"textures": "textures/ui/knapping/rock/stone"
+		},
+		"tfcla:ui_knapping_clay_ball": {
+			"textures": "textures/ui/knapping/clay_ball"
+		},
+		"tfcla:ui_knapping_clay_ball_disabled": {
+			"textures": "textures/ui/knapping/clay_ball_disabled"
+		},
+		"tfcla:ui_knapping_fire_clay": {
+			"textures": "textures/ui/knapping/fire_clay"
+		},
+		"tfcla:ui_knapping_fire_clay_disabled": {
+			"textures": "textures/ui/knapping/fire_clay_disabled"
+		},
+		"tfcla:ui_knapping_leather": {
+			"textures": "textures/ui/knapping/leather"
 		}
 	}
 }
