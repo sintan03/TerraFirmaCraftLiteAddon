@@ -1,28 +1,31 @@
-import { world, system, Dimension, DimensionTypes } from "@minecraft/server";
+// @ts-check
 
-import { itemUiData, knappingMap } from "../data/item_ui.js";
+import { world, system, DimensionTypes } from "@minecraft/server";
+
+import { KnappingData, knappingEntityId, knappingMap } from "../data/item_ui.js";
 
 system.runTimeout(() => {
     const players = world.getAllPlayers();
     const dimensions = DimensionTypes.getAll().map(dimensionType => world.getDimension(dimensionType.typeId));
     players.forEach(player => player.removeTag(`tfcla_knapping`));
-    itemUiData.forEach(data => {
-        for (const dimension of dimensions) {
-            const entities = dimension.getEntities({ "type": data.entity });
-            entities.forEach(entity => entity.remove());
-        };
-    });
+    for (const dimension of dimensions) {
+        const entities = dimension.getEntities({ "type": knappingEntityId });
+        entities.forEach(entity => entity.remove());
+    };
     system.runInterval(() => {
-        itemUiData.forEach(data => {
+        KnappingData.forEach(data => {
             for (const dimension of dimensions) {
-                const entities = dimension.getEntities({ "type": data.entity });
+                const entities = dimension.getEntities({ "type": knappingEntityId });
                 if (!entities) continue;
                 entities.forEach(entity => {
-                    if (knappingMap.has(entity.id)) {
-                        const type = knappingMap.get(entity.id).type;
-                        const itemUiDataFound = itemUiData.find(value => value.type === type);
-                        itemUiDataFound.tick(entity, itemUiDataFound);
-                        entity.teleport(knappingMap.get(entity.id).owner.getHeadLocation());
+                    const mapData = knappingMap.get(entity.id);
+                    if (mapData) {
+                        const type = mapData.type;
+                        const extractedData = KnappingData.find(value => value.type === type);
+                        if (extractedData) {
+                            extractedData.tick(entity, extractedData);
+                            entity.teleport(mapData.owner.getHeadLocation());
+                        };
                     };
                 });
             };
