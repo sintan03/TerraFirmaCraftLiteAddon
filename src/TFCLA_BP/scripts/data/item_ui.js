@@ -33,6 +33,25 @@ export const knappingTick = (entity, extractedData) => {
         player.runCommand(`clear @s ${extractedData.initialItems[0].itemId}`);
         mapData.progress = currentState;
     };
+
+    const complete = entity.getProperty(`tfcla:complete`);
+    const recipe = findKnappingRecipe(extractedData.itemId, currentState);
+    if (recipe) {
+	if (complete === 0) {
+	    entityContainer.setItem(27, new ItemStack(recipe.result));
+	    entity.setProperty(`tfcla:complete`, 1);
+	} else if (complete === 1 && !entityContainer.getItem(27)) {
+	    entity.setProperty(`tfcla:complete`, 2);
+	    for (let i = 0; i <= 25; i++) {
+		entityContainer.setItem(i);
+	    };
+	};
+    } else {
+	if (complete === 1) {
+	    entityContainer.setItem(27, undefined);
+	    entity.setProperty("ftcla:complete", 0);
+	};
+    };
 };
 
 /** @type { "tfcla:ui_knapping" } */

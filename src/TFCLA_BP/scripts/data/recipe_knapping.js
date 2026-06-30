@@ -29,7 +29,7 @@ function createKnappingRecipe(material, output, pattern) {
     };
 };
 
-export const KnappingRecipes = [
+export const knappingRecipes = [
 
     createKnappingRecipe(
         "tfcla:stone_loose_rock",
