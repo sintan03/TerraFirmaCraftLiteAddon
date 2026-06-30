@@ -8,8 +8,9 @@
       "is_experimental": false,
       "properties": {
         "tfcla:complete": {
-          "type": "bool",
-          "default": false
+          "type": "int",
+          "default": 0,
+          "range": [0, 1, 2]
         }
       }
     },

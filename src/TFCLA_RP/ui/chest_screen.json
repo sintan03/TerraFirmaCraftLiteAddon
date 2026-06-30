@@ -16,7 +16,7 @@
           "$screen_content": "knapping.ui_root",
           "$screen_bg_content": "common.screen_background",
           "$display_title": "ui.tfcla:knapping.rock.title",
-          "$container_size": 52
+          "$container_size": 28
         }
       },
       {
@@ -27,7 +27,7 @@
           "$screen_content": "knapping.ui_root",
           "$screen_bg_content": "common.screen_background",
           "$display_title": "ui.tfcla:knapping.clay_ball.title",
-          "$container_size": 52
+          "$container_size": 28
         }
       },
       {
@@ -38,7 +38,7 @@
           "$screen_content": "knapping.ui_root",
           "$screen_bg_content": "common.screen_background",
           "$display_title": "ui.tfcla:knapping.fire_clay.title",
-          "$container_size": 52
+          "$container_size": 28
         }
       },
       {
@@ -49,7 +49,7 @@
           "$screen_content": "knapping.ui_root",
           "$screen_bg_content": "common.screen_background",
           "$display_title": "ui.tfcla:knapping.leather.title",
-          "$container_size": 52
+          "$container_size": 28
         }
       }
     ]
