@@ -1,8 +1,8 @@
 // @ts-check
 
-import { world, system, Dimension, Player, ItemStack, Entity } from "@minecraft/server";
+import { Dimension, Player, ItemStack, Entity } from "@minecraft/server";
 
-import { KnappingData, knappingMap } from "../data/item_ui.js";
+import { knappingMap } from "../data/item_ui.js";
 
 /**
  * 
@@ -10,7 +10,7 @@ import { KnappingData, knappingMap } from "../data/item_ui.js";
  * @param { String } identifier 
  * @param { import("@minecraft/server").Vector3 } location 
  * @param { Player } player 
- * @param { { "type": String, "itemId": String, "sound": String, "foreItem": String, "always": Boolean, "initialItems": { "itemId": String | undefined, "index": Number | Number[], "consecutive": Boolean? }[] } } extractedData 
+ * @param { { "itemId": String, "sound": String, "foreItem": String | undefined, "always": Boolean, "initialItems": { "itemId": String | undefined, "index": Number | Number[], "consecutive"?: Boolean | undefined }[] } } extractedData 
  * @returns { Entity }
  */
 export function spawnUiEntity(dimension, identifier, location, player, extractedData) {
@@ -39,7 +39,7 @@ export function spawnUiEntity(dimension, identifier, location, player, extracted
         knappingMap.set(entity.id, {
             "progress": Array(25).fill(true),
             "owner": player,
-            "type": extractedData.type
+            "itemId": extractedData.itemId
         });
     };
     return entity;

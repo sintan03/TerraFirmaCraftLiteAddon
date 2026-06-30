@@ -39,6 +39,10 @@
 		},
 		"tfcla:ui_knapping_leather": {
 			"textures": "textures/ui/knapping/leather"
+		},
+
+		"tfcla:ui_air": {
+			"textures": "textures/ui/air"
 		}
 	}
 }
