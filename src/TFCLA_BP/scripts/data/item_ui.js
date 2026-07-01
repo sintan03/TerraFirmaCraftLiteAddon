@@ -1,58 +1,11 @@
 // @ts-check
 
-import { Entity, Player } from "@minecraft/server";
+import { Entity, Player, ItemStack } from "@minecraft/server";
+
+import { findKnappingRecipe } from "../ui/function.js";
 
 /** @type { Map<String, { "progress": Boolean[], "owner": Player, "itemId": String }> } */
 export const knappingMap = new Map();
-
-/**
- * 
- * @param { Entity } entity 
- * @param { { "itemId": String, "sound": String, "foreItem": String | undefined, "always": Boolean, "initialItems": { "itemId": String | undefined, "index": Number | Number[], "consecutive"?: Boolean | undefined }[] } } extractedData
- */
-export const knappingTick = (entity, extractedData) => {
-    const mapData = knappingMap.get(entity.id);
-    if (!mapData) return;
-    const progress = mapData.progress;
-    const player = mapData.owner;
-    const currentState = [];
-    const entityInventory = entity.getComponent(`minecraft:inventory`);
-    if (!entityInventory) return;
-    const entityContainer = entityInventory.container;
-    for (let i = 1; i <= 25; i++) {
-        currentState.push(entityContainer.getItem(i)?.typeId === extractedData.initialItems[0].itemId);
-    };
-    let changed = false;
-    for (let i = 0; i < 25; i++) {
-        if (progress[i] && !currentState[i]) {
-            player.playSound(extractedData.sound);
-            changed = true;
-        };
-    };
-    if (changed) {
-        player.runCommand(`clear @s ${extractedData.initialItems[0].itemId}`);
-        mapData.progress = currentState;
-    };
-
-    const complete = entity.getProperty(`tfcla:complete`);
-    const recipe = findKnappingRecipe(extractedData.itemId, currentState);
-    if (recipe) {
-	if (complete === 0) {
-	    entityContainer.setItem(27, new ItemStack(recipe.result));
-	    entity.setProperty(`tfcla:complete`, 1);
-	} else if (complete === 1 && !entityContainer.getItem(27)) {
-	    entity.setProperty(`tfcla:complete`, 2);
-	    for (let i = 0; i <= 25; i++) {
-		entityContainer.setItem(i);
-	    };
-	};
-    } else {
-	if (complete === 1) {
-	    entityContainer.setItem(27, undefined);
-	    entity.setProperty("ftcla:complete", 0);
-	};
-    };
-};
 
 /** @type { "tfcla:ui_knapping" } */
 export const knappingEntityId = "tfcla:ui_knapping";

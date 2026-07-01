@@ -2,7 +2,8 @@
 
 import { world, system, DimensionTypes, EquipmentSlot } from "@minecraft/server";
 
-import { KnappingData, knappingEntityId, knappingMap, knappingTick } from "../data/item_ui.js";
+import { KnappingData, knappingEntityId, knappingMap } from "../data/item_ui.js";
+import { knappingTick } from "./function.js";
 
 system.runTimeout(() => {
     const players = world.getAllPlayers();
